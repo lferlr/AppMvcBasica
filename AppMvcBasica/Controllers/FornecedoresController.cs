@@ -54,11 +54,10 @@ namespace AppMvcBasica.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nome,Documento,TipoFornecedor,Ativo,Id")] Fornecedor fornecedor)
+        public async Task<IActionResult> Create(Fornecedor fornecedor)
         {
             if (ModelState.IsValid)
             {
-                fornecedor.Id = Guid.NewGuid();
                 _context.Add(fornecedor);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -87,7 +86,7 @@ namespace AppMvcBasica.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Nome,Documento,TipoFornecedor,Ativo,Id")] Fornecedor fornecedor)
+        public async Task<IActionResult> Edit(Guid id, Fornecedor fornecedor)
         {
             if (id != fornecedor.Id)
             {
