@@ -1,10 +1,10 @@
 ﻿@model AppMvcBasica.Models.Fornecedor
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Cadastrar";
 }
 
-<h1>Create</h1>
+<h1>@ViewData["Title"]</h1>
 
 <h4>Fornecedor</h4>
 <hr />
@@ -13,17 +13,17 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
+                <label asp-for="Nome" class="control-label">Nome ou Razão Social</label>
                 <input asp-for="Nome" class="form-control" />
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Documento" class="control-label"></label>
+                <label asp-for="Documento" class="control-label">CPF ou CNPJ</label>
                 <input asp-for="Documento" class="form-control" />
                 <span asp-validation-for="Documento" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TipoFornecedor" class="control-label"></label><br />
+                <label asp-for="TipoFornecedor" class="control-label">Tipo Fornecedor</label><br />
                 <input type="radio" value="1" asp-for="TipoFornecedor" checked /> Pessoa Física<br />
                 <input type="radio" value="2" asp-for="TipoFornecedor" /> Pessoa Jurídica
 
@@ -39,15 +39,13 @@
 
             <partial name="_Endereco" />
 
+            <br />
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Cadastrar" class="btn btn-success" />
+                <a class="btn btn-info" asp-action="Index">Voltar</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
